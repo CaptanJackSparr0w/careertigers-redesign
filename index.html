@@ -3,508 +3,611 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CareerTigers — From Campus to Your Dream Job</title>
-<meta name="description" content="CareerTigers helps campus learners get their dream job with AI resume tools, mock interviews, expert coaching and placement support.">
-<meta property="og:title" content="CareerTigers — From Campus to Your Dream Job">
-<meta property="og:description" content="AI career tools, expert coaching and placement support for campus learners and alumni.">
+<title>Career Tiger — Find your fit. Or get fit.</title>
+<meta name="description" content="Find the job that's right for you — or get fit for the job you want. AI-powered career discovery, assessments, resume, interview prep and expert counselling.">
+<meta property="og:title" content="Career Tiger — Find the job that's right for you. Or get fit for the job you want.">
+<meta property="og:image" content="images/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#13203B; --ink-2:#34425F; --muted:#5E6A80;
-  --tiger:#F26B1D; --tiger-dk:#C9520D; --tiger-soft:#FFE9DA;
-  --cream:#FFF9F2; --sand:#F6EEE3; --line:#E9E0D3; --white:#fff;
-  --green:#1C8C5E; --green-soft:#E3F4EC;
-  --r:18px; --shadow:0 1px 2px rgba(19,32,59,.06),0 12px 32px -12px rgba(19,32,59,.18);
-  --serif:"Fraunces",Georgia,serif; --sans:"Figtree",system-ui,sans-serif;
+  --night:#0B1428; --night-2:#131F3A; --night-3:#1C2A4A;
+  --ink:#0E1830; --muted:#5B667D; --line:#E7E1D8;
+  --cream:#FFF8F1; --paper:#fff; --sand:#F5EDE2;
+  --fit:#F26B1D; --fit-2:#FF9A52; --fit-soft:#FFE8D7;      /* Find your fit = orange */
+  --get:#12A37A; --get-2:#4FD6A8; --get-soft:#DDF5EC;      /* Get fit = green */
+  --ai:#7C8CFF;
+  --display:"Bricolage Grotesque",system-ui,sans-serif; --sans:"Figtree",system-ui,sans-serif;
+  --r:20px; --shadow:0 1px 2px rgba(14,24,48,.06),0 18px 40px -18px rgba(14,24,48,.28);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{overflow-x:clip;font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-height:1.08}
-h2{font-size:clamp(2rem,4vw,2.9rem)}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--tiger-dk)}
-.eyebrow::before{content:"";width:22px;height:2px;background:var(--tiger)}
-.lead{font-size:1.12rem;color:var(--muted);max-width:56ch}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:1rem;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;border:0}
-.btn-primary{background:var(--tiger);color:#fff;box-shadow:0 10px 24px -10px rgba(242,107,29,.7)}
-.btn-primary:hover{background:var(--tiger-dk);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
-.btn-ghost:hover{background:var(--ink);color:#fff}
-section{padding:96px 0}
-.sec-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:48px;flex-wrap:wrap}
-.sec-head .lead{margin-top:14px}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.03em;line-height:1.02}
+h2{font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:800}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fit)}
+.center{text-align:center}
+.sub{font-size:1.15rem;color:var(--muted);margin-top:14px}
+section{padding:110px 0;position:relative}
+.ai-tag{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:4px 9px;border-radius:99px;background:linear-gradient(90deg,rgba(124,140,255,.14),rgba(242,107,29,.14));color:#4B55C8}
+.ai-tag::before{content:"✦"}
 
-/* ---------- announcement + nav ---------- */
-.topbar{background:var(--ink);color:#fff;font-size:.88rem;text-align:center;padding:9px 16px}
-.topbar a{color:#FFB98E;font-weight:600;margin-left:6px}
-nav{position:sticky;top:0;z-index:50;background:rgba(255,249,242,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
-.logo img{height:46px;width:auto}
-.nav-links{display:flex;gap:30px;font-weight:500;font-size:.95rem;color:var(--ink-2)}
-.nav-links a{position:relative}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--tiger);transition:width .25s}
-.nav-links a:hover::after{width:100%}
-.nav-cta{display:flex;gap:12px;align-items:center}
-.nav-cta .login{font-weight:600;font-size:.95rem}
-.nav-cta .btn{padding:10px 20px;font-size:.93rem}
-.burger{display:none;background:none;border:0;font-size:1.6rem;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:14px;font-weight:700;font-size:1.02rem;border:0;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn .i{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.2)}
+.btn-fit{background:var(--fit);color:#fff;box-shadow:0 14px 30px -12px rgba(242,107,29,.8)}
+.btn-get{background:var(--get);color:#fff;box-shadow:0 14px 30px -12px rgba(18,163,122,.8)}
 
-/* ---------- hero ---------- */
-.hero{padding:72px 0 88px;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;right:-180px;top:-120px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(242,107,29,.16),transparent 65%)}
-.stripes{position:absolute;right:0;bottom:0;width:48%;height:100%;opacity:.07;background:repeating-linear-gradient(115deg,var(--ink) 0 14px,transparent 14px 46px);mask-image:linear-gradient(to left,#000,transparent)}
-.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;position:relative}
-.hero h1{font-size:clamp(2.7rem,6vw,4.7rem);margin:20px 0 22px}
-.hero h1 em{font-style:italic;color:var(--tiger);position:relative;white-space:nowrap}
-.hero h1 em svg{position:absolute;left:0;bottom:-10px;width:100%;height:14px}
-.hero .ctas{display:flex;gap:14px;margin:34px 0 30px;flex-wrap:wrap}
-.proof{display:flex;align-items:center;gap:14px;font-size:.93rem;color:var(--muted)}
-.avatars{display:flex}
-.avatars span{width:36px;height:36px;border-radius:50%;border:2.5px solid var(--cream);margin-left:-10px;display:grid;place-items:center;font-weight:700;font-size:.8rem;color:#fff}
-.avatars span:first-child{margin-left:0}
-.proof strong{color:var(--ink)}
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:60;transition:background .3s,box-shadow .3s}
+nav.solid{background:rgba(11,20,40,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
+.logo img{height:40px;width:auto;background:#fff;border-radius:10px;padding:3px 6px}
+.links{display:flex;gap:34px;color:#C9D1E4;font-weight:500;font-size:.96rem}
+.links a:hover{color:#fff}
+.nav-r{display:flex;gap:18px;align-items:center}
+.nav-r .login{color:#fff;font-weight:600}
+.nav-r .btn{padding:11px 20px;font-size:.93rem;border-radius:12px}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem}
 
-.hero-card{margin-bottom:40px;background:var(--white);border-radius:26px;box-shadow:var(--shadow);padding:26px;position:relative;border:1px solid var(--line)}
-.hc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.hc-user{display:flex;gap:12px;align-items:center}
-.hc-user .pic{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--tiger),#FFB067);display:grid;place-items:center;color:#fff;font-weight:700}
-.hc-user b{display:block;font-size:1rem}
-.hc-user small{color:var(--muted)}
-.pill{font-size:.75rem;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--green-soft);color:var(--green)}
-.meter{margin:6px 0 22px}
-.meter-row{display:flex;justify-content:space-between;font-size:.87rem;font-weight:600;margin-bottom:8px}
-.bar{height:10px;background:var(--sand);border-radius:99px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--tiger),#FFA15C);border-radius:99px;animation:fill 1.6s .5s cubic-bezier(.2,.8,.2,1) forwards}
-@keyframes fill{to{width:82%}}
-.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.check{display:flex;gap:10px;align-items:center;background:var(--cream);border-radius:12px;padding:11px 12px;font-size:.88rem;font-weight:500}
-.check .tick{width:22px;height:22px;flex:none;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:.7rem}
-.check.pending .tick{background:var(--line);color:var(--muted)}
-.float{position:absolute;background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:13px 16px;display:flex;gap:12px;align-items:center;font-size:.86rem;animation:bob 5s ease-in-out infinite}
-.float b{display:block;font-size:.95rem}
-.float .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:1.05rem}
-.f1{left:-46px;bottom:-64px}
-.f2{right:-24px;top:-30px;animation-delay:-2.5s}
-@keyframes bob{50%{transform:translateY(-8px)}}
+/* hero */
+.hero{position:relative;background:var(--night);color:#fff;padding:150px 0 90px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 400px at 78% 40%,rgba(242,107,29,.22),transparent 70%),
+  radial-gradient(500px 360px at 10% 90%,rgba(18,163,122,.16),transparent 70%);}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 60% 40%,#000 20%,transparent 75%)}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,4.1vw,3.9rem);font-weight:800}
+.hero h1 .l1{display:block}
+.hero h1 .l2{display:block;margin-top:10px;background:linear-gradient(90deg,var(--get-2),#9BF0CF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .l1 u{white-space:nowrap;text-decoration:none;background:linear-gradient(90deg,var(--fit),var(--fit-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:1.15rem;color:#B9C3D8;max-width:44ch;margin:24px 0 36px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.cta-note{display:flex;gap:26px;margin-top:22px;font-size:.86rem;color:#8F9AB3}
+.cta-note span::before{content:"●";margin-right:7px;font-size:.7rem}
+.cta-note span:first-child::before{color:var(--fit)}
+.cta-note span:last-child::before{color:var(--get)}
 
-/* ---------- trust strip ---------- */
-.trust{padding:34px 0 38px;border-block:1px solid var(--line);background:var(--white)}
-.trust p{text-align:center;font-size:.9rem;color:var(--muted);margin-bottom:20px}
-.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.track{display:flex;gap:56px;width:max-content;animation:scroll 40s linear infinite}
-.marquee:hover .track{animation-play-state:paused}
-.track span{font-family:var(--serif);font-weight:600;font-size:1.3rem;color:#8B93A3;white-space:nowrap;transition:color .2s}
-.track span:hover{color:var(--ink)}
+.stage{position:relative}
+.stage .frame{border-radius:28px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08)}
+.stage .frame img{width:100%;height:100%;object-fit:cover}
+.chip{position:absolute;background:rgba(19,31,58,.82);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:12px 15px;color:#fff;display:flex;gap:12px;align-items:center;box-shadow:0 20px 40px -20px rgba(0,0,0,.6);animation:bob 6s ease-in-out infinite}
+.chip small{display:block;color:#9AA6BF;font-size:.74rem}
+.chip b{font-size:.95rem}
+.ring{--p:92;--c:var(--fit);width:46px;height:46px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p)*1%),rgba(255,255,255,.12) 0);display:grid;place-items:center;font-weight:800;font-size:.8rem;flex:none}
+.ring::before{content:"";position:absolute}
+.ring span{width:36px;height:36px;border-radius:50%;background:var(--night-2);display:grid;place-items:center}
+.c1{left:-34px;top:22%}
+.c2{right:-22px;bottom:14%;animation-delay:-3s}
+.c3{left:12%;bottom:-26px;animation-delay:-1.5s}
+.dots{display:flex;gap:4px}
+.dots i{width:18px;height:6px;border-radius:9px;background:var(--get)}
+.dots i.o{background:rgba(255,255,255,.18)}
+@keyframes bob{50%{transform:translateY(-9px)}}
+
+/* compare */
+.compare{margin-top:56px;display:grid;gap:18px}
+.row{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px 28px}
+.row .lbl b{display:block;font-family:var(--display);font-size:1.15rem}
+.row .lbl small{color:var(--muted)}
+.row.old{opacity:.75;background:transparent;border-style:dashed}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.node{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;font-weight:700;font-size:.95rem;background:var(--sand)}
+.node .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#fff;font-size:1rem}
+.old .node{background:#EFEBE5;color:#8A8F9B}
+.arrow{color:#C9C0B3;font-weight:700}
+.ct .node{background:linear-gradient(135deg,var(--fit-soft),#FFF3EA);border:1px solid #FFD7BD;opacity:0;transform:translateY(10px);transition:all .5s}
+.ct.in .node{opacity:1;transform:none}
+.ct .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.ct .arrow{display:none}.ct .node{flex-direction:column;align-items:flex-start;position:relative}.ct .node:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--fit);font-weight:800;z-index:1}
+.ct .node small{display:block;font-weight:500;color:var(--muted);font-size:.78rem;margin-top:1px}
+
+/* orbit personalization */
+.persona{background:var(--paper)}
+.orbit-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.orbit{position:relative;aspect-ratio:1;max-width:520px;margin:auto;width:100%}
+.orbit .ringline{position:absolute;inset:8%;border:1.5px dashed #E4D8C9;border-radius:50%}
+.orbit .ringline.i2{inset:26%;border-color:#F0E4D6}
+.me{position:absolute;inset:36%;border-radius:50%;background:linear-gradient(135deg,var(--fit),#FFB36B);display:grid;place-items:center;color:#fff;text-align:center;box-shadow:0 0 0 12px var(--fit-soft),0 30px 60px -20px rgba(242,107,29,.6)}
+.me b{font-family:var(--display);font-size:1.6rem;display:block}
+.me small{font-size:.78rem;opacity:.9}
+.sat{position:absolute;transform:translate(-50%,-50%);background:#fff;border:1px solid var(--line);border-radius:14px;padding:9px 13px;font-weight:700;font-size:.88rem;box-shadow:var(--shadow);display:flex;gap:8px;align-items:center;white-space:nowrap;transition:transform .3s}
+.sat:hover{transform:translate(-50%,-50%) scale(1.07)}
+.sat em{font-style:normal;font-weight:500;color:var(--muted);font-size:.8rem}
+.sat.gap{border-color:#BDEBD8;background:var(--get-soft)}
+
+/* find your fit */
+.fit{background:var(--night);color:#fff;overflow:hidden}
+.fit::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 50% 50%,rgba(242,107,29,.16),transparent 70%)}
+.fit .wrap{position:relative}
+.fit .sub{color:#AEB8CE}
+.toggle{display:inline-flex;background:var(--night-2);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:5px;margin-top:28px}
+.toggle button{border:0;background:none;color:#AEB8CE;padding:10px 18px;border-radius:10px;font-weight:600;font-size:.92rem}
+.toggle button.on{background:#fff;color:var(--ink)}
+.fit-grid{display:grid;grid-template-columns:1fr 150px 1.15fr;gap:24px;align-items:center;margin-top:48px}
+.card-d{background:var(--night-2);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:24px}
+.prof-h{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+.av{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--fit),#FFB36B);display:grid;place-items:center;font-weight:800}
+.prof-h small{color:#8F9AB3;display:block}
+.attr{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center;padding:9px 0;border-top:1px solid rgba(255,255,255,.06);font-size:.88rem}
+.attr span{color:#8F9AB3}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags i{font-style:normal;background:rgba(255,255,255,.07);padding:4px 9px;border-radius:8px;font-size:.8rem;font-weight:600}
+.core{display:grid;justify-items:center;gap:12px;text-align:center}
+.orb{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFD2AE,var(--fit) 45%,#A4390A);box-shadow:0 0 60px rgba(242,107,29,.6),0 0 0 10px rgba(242,107,29,.12),0 0 0 22px rgba(242,107,29,.06);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.95rem;line-height:1.1;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 90px rgba(242,107,29,.8),0 0 0 14px rgba(242,107,29,.14),0 0 0 30px rgba(242,107,29,.05)}}
+.core small{color:#8F9AB3;font-size:.8rem}
+.beam{height:2px;width:100%;background:linear-gradient(90deg,transparent,var(--fit),transparent);position:relative;overflow:hidden}
+.jobs{display:grid;gap:12px}
+.job{display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;background:var(--night-2);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px;transition:all .4s}
+.job .lg{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.4rem;background:rgba(255,255,255,.06)}
+.job b{display:block}
+.job .why{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.job .why i{font-style:normal;font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:7px;background:rgba(242,107,29,.14);color:#FFB27E}
+.job .ring span{background:var(--night-2)}
+.jobs.kw .job{filter:grayscale(1);opacity:.45}
+.jobs.kw .job:first-child{opacity:.9}
+.jobs.kw .why{display:none}
+.kwnote{margin-top:12px;font-size:.85rem;color:#8F9AB3;min-height:1.3em}
+
+/* get fit */
+.get-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start;margin-top:56px}
+.steps{display:grid;gap:6px;position:relative}
+.steps::before{content:"";position:absolute;left:23px;top:24px;bottom:24px;width:2px;background:var(--line)}
+.steps .bar{position:absolute;left:23px;top:24px;width:2px;background:var(--get);height:0;transition:height .5s}
+.st{display:flex;gap:16px;align-items:center;padding:10px 12px 10px 0;border-radius:14px;background:none;border:0;text-align:left;position:relative;color:var(--muted);font-weight:700;font-size:1.02rem;transition:color .3s}
+.st .dot{width:48px;height:48px;flex:none;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-size:1.1rem;transition:all .3s;position:relative;z-index:1}
+.st.done{color:var(--ink)}
+.st.done .dot{border-color:var(--get);background:var(--get-soft)}
+.st.on{color:var(--ink)}
+.st.on .dot{background:var(--get);border-color:var(--get);color:#fff;box-shadow:0 0 0 7px var(--get-soft)}
+.st small{display:block;font-weight:500;font-size:.82rem;color:var(--muted)}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:28px;min-height:470px;position:sticky;top:100px}
+.pane{display:none;animation:fade .45s}
+.pane.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+.pane h3{font-size:1.6rem;margin:10px 0 18px}
+.pane .img{border-radius:18px;overflow:hidden;aspect-ratio:16/9;margin-bottom:16px}
+.pane .img img{width:100%;height:100%;object-fit:cover}
+.gauge{display:flex;gap:26px;align-items:center}
+.big-ring{--p:0;width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--get) calc(var(--p)*1%),var(--sand) 0);display:grid;place-items:center;transition:--p 1s;flex:none}
+.big-ring span{width:118px;height:118px;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:800;font-size:2.3rem;line-height:1}
+.big-ring small{display:block;font-family:var(--sans);font-size:.75rem;color:var(--muted);font-weight:600}
+.checklist{display:grid;gap:10px;flex:1}
+.checklist div{display:flex;gap:10px;align-items:center;font-size:.93rem;font-weight:600;background:var(--cream);padding:10px 12px;border-radius:12px}
+.checklist .x{color:#D64545}.checklist .ok{color:var(--get)}
+.sk{display:grid;gap:14px}
+.sk div{display:grid;grid-template-columns:140px 1fr 44px;gap:12px;align-items:center;font-weight:600;font-size:.92rem}
+.sk .tr{height:12px;border-radius:9px;background:var(--sand);position:relative;overflow:hidden}
+.sk .tr i{position:absolute;inset:0 auto 0 0;border-radius:9px;background:var(--get)}
+.sk .tr u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+.sk .gapc i{background:linear-gradient(90deg,var(--get),#FFB36B)}
+.legend{display:flex;gap:18px;font-size:.8rem;color:var(--muted);margin-top:14px}
+.target{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.target span{padding:12px 16px;border-radius:14px;border:1.5px solid var(--line);font-weight:700;font-size:.95rem}
+.target span.sel{border-color:var(--get);background:var(--get-soft)}
+.jd{margin-top:18px;background:var(--cream);border-radius:14px;padding:16px;font-size:.88rem;color:var(--muted)}
+.jd b{color:var(--ink)}
+.ready{text-align:center;padding:26px 0}
+.ready .medal{width:130px;height:130px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#A6F2D6,var(--get) 55%,#07684C);display:grid;place-items:center;font-size:3rem;box-shadow:0 0 0 12px var(--get-soft)}
+
+/* tools */
+.tools{background:var(--paper)}
+.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(210px,auto);gap:18px;margin-top:52px}
+.tool{border-radius:22px;padding:24px;background:var(--cream);border:1px solid var(--line);display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.tool:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.tool .ico{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:1.45rem;background:#fff;box-shadow:0 6px 16px -8px rgba(14,24,48,.25)}
+.tool h3{font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.tool p{font-size:.92rem;color:var(--muted)}
+.tool .top{display:flex;justify-content:space-between;align-items:start}
+.tool.wide{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:0}
+.tool.wide .txt{padding:24px;display:flex;flex-direction:column;gap:12px}
+.tool.wide .ph{min-height:100%;position:relative}
+.tool.wide .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tool.dark{background:var(--night);color:#fff;border:0}
+.tool.dark p{color:#AEB8CE}
+.tool.dark .ico{background:var(--night-3)}
+.mini-score{margin-top:auto;display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:700}
+.mini-score .tr{flex:1;height:8px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden}
+.mini-score .tr i{display:block;height:100%;width:86%;background:linear-gradient(90deg,var(--get),var(--get-2))}
+.human{font-size:.72rem;font-weight:700;padding:4px 9px;border-radius:99px;background:var(--fit-soft);color:#B44A0C}
+
+/* moves */
+.moves-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.moves-tabs button{border:1.5px solid var(--line);background:#fff;padding:12px 20px;border-radius:14px;font-weight:700;display:flex;gap:8px;align-items:center;transition:all .2s}
+.moves-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.path{margin-top:44px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.path::before{content:"";position:absolute;top:40px;left:10%;right:10%;height:4px;border-radius:4px;background:linear-gradient(90deg,#CFC6BA,var(--fit) 55%,var(--get))}
+.pn{text-align:center;padding:0 10px;position:relative}
+.pn .b{width:84px;height:84px;margin:0 auto 16px;border-radius:24px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:1.8rem;box-shadow:var(--shadow);position:relative;z-index:1;transition:transform .3s}
+.pn:first-child .b{background:var(--sand)}
+.pn:last-child .b{background:var(--get);color:#fff;border:0;box-shadow:0 0 0 10px var(--get-soft),var(--shadow)}
+.pn small{display:block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pn b{display:block;font-family:var(--display);font-size:1.15rem;margin-top:4px;letter-spacing:-.01em;min-height:2.6em}
+.path.swap .pn b{animation:fade .45s}
+
+/* how */
+.how{background:var(--night);color:#fff}
+.how .sub{color:#AEB8CE}
+.how-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:54px;counter-reset:n}
+.hw{background:var(--night-2);border:1px solid rgba(255,255,255,.07);border-radius:22px;padding:24px 20px;position:relative;overflow:hidden}
+.hw::before{counter-increment:n;content:"0" counter(n);font-family:var(--display);font-weight:800;font-size:3.4rem;line-height:1;color:rgba(255,255,255,.06);position:absolute;right:12px;top:8px}
+.hw .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;background:rgba(242,107,29,.16);margin-bottom:18px}
+.hw:nth-child(3) .ico,.hw:nth-child(4) .ico{background:rgba(18,163,122,.18)}
+.hw h3{font-size:1.35rem;margin-bottom:6px}
+.hw p{font-size:.88rem;color:#AEB8CE}
+.hw .pg{height:4px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:18px;overflow:hidden}
+.hw .pg i{display:block;height:100%;background:linear-gradient(90deg,var(--fit),var(--get));width:0;transition:width 1s}
+.how.in .hw:nth-child(1) .pg i{width:20%}.how.in .hw:nth-child(2) .pg i{width:40%;transition-delay:.15s}.how.in .hw:nth-child(3) .pg i{width:60%;transition-delay:.3s}.how.in .hw:nth-child(4) .pg i{width:80%;transition-delay:.45s}.how.in .hw:nth-child(5) .pg i{width:100%;transition-delay:.6s}
+
+/* proof */
+.proof-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:48px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px}
+.stat b{font-family:var(--display);font-size:3.2rem;font-weight:800;letter-spacing:-.04em;line-height:1;display:block;background:linear-gradient(90deg,var(--fit),var(--get));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-weight:600}
+.marquee{overflow:hidden;margin-top:28px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:14px;width:max-content;animation:scroll 45s linear infinite}
+.track span{background:#fff;border:1px solid var(--line);padding:14px 22px;border-radius:14px;font-weight:700;color:#6E7688;white-space:nowrap}
 @keyframes scroll{to{transform:translateX(-50%)}}
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.story{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px}
+.story .mv{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem;flex-wrap:wrap}
+.story .mv span{padding:6px 10px;border-radius:9px;background:var(--sand)}
+.story .mv span.to{background:var(--get-soft);color:#0B7355}
+.story q{display:block;margin:14px 0;color:var(--muted);font-size:.95rem}
+.story .who{display:flex;gap:10px;align-items:center;font-size:.88rem}
+.story .who i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;color:#fff;background:var(--fit)}
+.note{margin-top:16px;text-align:center;font-size:.8rem;color:var(--muted);font-style:italic}
 
-/* ---------- stats ---------- */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--ink);color:#fff;border-radius:24px;overflow:hidden;margin-top:56px;position:relative;z-index:2}
-.stat{padding:30px 28px;border-right:1px solid rgba(255,255,255,.1)}
-.stat:last-child{border:0}
-.stat b{font-family:var(--serif);font-size:2.5rem;font-weight:600;color:#FFB98E;display:block;line-height:1}
-.stat span{font-size:.92rem;opacity:.8;margin-top:8px;display:block}
+/* final */
+.final{padding:40px 0 110px}
+.final .box{background:var(--night);color:#fff;border-radius:36px;padding:80px 40px;text-align:center;position:relative;overflow:hidden}
+.final .box::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 300px at 20% 100%,rgba(242,107,29,.35),transparent 70%),radial-gradient(500px 300px at 80% 0%,rgba(18,163,122,.3),transparent 70%)}
+.final h2{position:relative;color:#fff}
+.final .ctas{justify-content:center;margin-top:34px;position:relative}
+.final p{position:relative;color:#AEB8CE;margin-top:14px;font-size:1.1rem}
+footer{padding:0 0 40px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:28px}
+footer nav{position:static;display:flex;gap:22px}
 
-/* ---------- journey ---------- */
-.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:s;position:relative}
-.journey::before{content:"";position:absolute;top:34px;left:12%;right:12%;border-top:2px dashed #E4C8B3}
-.step{position:relative;text-align:left;background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px 24px;transition:transform .25s,box-shadow .25s}
-.step:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.step .num{counter-increment:s;width:44px;height:44px;border-radius:50%;background:var(--tiger);color:#fff;font-weight:700;display:grid;place-items:center;margin-bottom:18px;box-shadow:0 0 0 7px var(--cream)}
-.step .num::before{content:counter(s)}
-.step h3{font-size:1.35rem;margin-bottom:8px}
-.step p{color:var(--muted);font-size:.95rem}
-.step small{display:block;margin-top:14px;font-weight:600;color:var(--tiger-dk);font-size:.82rem}
-
-/* ---------- tools ---------- */
-.tools{background:var(--white)}
-.tool-tabs{display:flex;gap:8px;background:var(--sand);padding:6px;border-radius:999px;width:max-content}
-.tool-tabs button{border:0;background:none;padding:10px 20px;border-radius:999px;font:600 .92rem var(--sans);color:var(--ink-2);cursor:pointer}
-.tool-tabs button.on{background:var(--white);color:var(--ink);box-shadow:0 2px 8px rgba(19,32,59,.1)}
-.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.tool{border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s;background:var(--cream)}
-.tool:hover{border-color:var(--tiger);transform:translateY(-3px)}
-.tool .ico{width:46px;height:46px;border-radius:13px;background:var(--tiger-soft);display:grid;place-items:center;font-size:1.3rem}
-.tool h3{font-family:var(--sans);font-weight:700;font-size:1.05rem;letter-spacing:0}
-.tool p{font-size:.92rem;color:var(--muted);flex:1}
-.tool a{font-weight:600;color:var(--tiger-dk);font-size:.9rem}
-.tool .tag{align-self:flex-start;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:6px;background:var(--ink);color:#fff}
-.hide{display:none}
-
-/* ---------- stories ---------- */
-.story-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px}
-.story{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:18px}
-.story.big{background:var(--ink);color:#fff;border:0}
-.story q{font-family:var(--serif);font-size:1.15rem;line-height:1.45;quotes:"“" "”"}
-.story.big q{font-size:1.55rem}
-.who{display:flex;gap:12px;align-items:center;margin-top:auto}
-.who .pic{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;background:var(--tiger)}
-.who b{display:block}
-.who small{color:var(--muted)}
-.story.big .who small{color:#B8C0D0}
-.move{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;background:var(--cream);color:var(--ink);padding:10px 14px;border-radius:12px;flex-wrap:wrap}
-.story.big .move{background:rgba(255,255,255,.08);color:#fff}
-.move .arrow{color:var(--tiger)}
-.verified{font-size:.75rem;font-weight:700;color:var(--green);display:inline-flex;gap:5px;align-items:center}
-.story.big .verified{color:#6FE0AE}
-.note{margin-top:22px;font-size:.82rem;color:var(--muted);text-align:center;font-style:italic}
-
-/* ---------- industries ---------- */
-.industries{background:var(--sand)}
-.ind-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
-.ind-list{display:flex;flex-wrap:wrap;gap:10px}
-.ind{background:var(--white);border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .2s}
-.ind:hover,.ind.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.roles{margin-top:26px;background:var(--white);border-radius:var(--r);padding:22px 24px;border:1px solid var(--line)}
-.roles small{color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
-.roles div{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.roles span{background:var(--tiger-soft);color:var(--tiger-dk);font-weight:600;padding:7px 14px;border-radius:10px;font-size:.9rem}
-
-/* ---------- learn ---------- */
-.learn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.mc{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .25s,box-shadow .25s}
-.mc:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.mc .thumb{height:150px;position:relative;display:flex;align-items:flex-end;padding:16px;color:#fff}
-.mc:nth-child(1) .thumb{background:linear-gradient(135deg,#13203B,#34507F)}
-.mc:nth-child(2) .thumb{background:linear-gradient(135deg,#C9520D,#F59A4E)}
-.mc:nth-child(3) .thumb{background:linear-gradient(135deg,#1C6B52,#3FAE85)}
-.mc .thumb .play{position:absolute;right:16px;top:16px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);display:grid;place-items:center}
-.mc .thumb span{font-size:.78rem;font-weight:700;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:99px}
-.mc .body{padding:22px}
-.mc h3{font-family:var(--sans);font-size:1.08rem;font-weight:700;letter-spacing:0;margin-bottom:8px}
-.mc p{font-size:.92rem;color:var(--muted)}
-.mc .by{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:.87rem}
-.mc .by b{display:block}
-.cert-band{margin-top:28px;display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r);background:var(--white);overflow:hidden}
-.cert-band>div{padding:24px;border-right:1px solid var(--line)}
-.cert-band>div:last-child{border:0}
-.cert-band h3{font-size:1.4rem;margin-bottom:6px}
-.cert-band b{display:block;font-size:.98rem;margin-bottom:4px}
-.cert-band p{font-size:.88rem;color:var(--muted)}
-
-/* ---------- faq ---------- */
-.faq-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
-details{border-bottom:1px solid var(--line);padding:22px 0}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:1.08rem;gap:20px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-size:1.5rem;color:var(--tiger);transition:transform .25s}
-details[open] summary::after{transform:rotate(45deg)}
-details p{margin-top:12px;color:var(--muted);max-width:62ch}
-
-/* ---------- cta + footer ---------- */
-.cta{background:var(--ink);color:#fff;border-radius:32px;padding:64px;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;position:relative;overflow:hidden}
-.cta::after{content:"";position:absolute;right:-100px;bottom:-100px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(242,107,29,.45),transparent 70%)}
-.cta h2{color:#fff}
-.cta h2 em{color:#FFB98E}
-.cta p{color:#C3CADA;margin-top:16px}
-.cta form{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px;display:grid;gap:12px;position:relative;z-index:1}
-.cta input,.cta select{width:100%;padding:13px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font:500 .95rem var(--sans)}
-.cta input::placeholder{color:#9AA4B8}
-.cta select option{color:var(--ink)}
-.cta small{color:#9AA4B8;font-size:.78rem}
-.contact-row{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap;font-size:.93rem}
-.contact-row b{display:block;color:#FFB98E;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em}
-footer{padding:64px 0 32px;font-size:.92rem;color:var(--muted)}
-.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:40px;margin-bottom:40px}
-.foot h4{color:var(--ink);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
-.foot ul{list-style:none;display:grid;gap:8px}
-.foot a:hover{color:var(--tiger-dk)}
-.sub{display:flex;gap:8px;margin-top:12px}
-.sub input{flex:1;padding:11px 14px;border-radius:999px;border:1px solid var(--line);font:inherit;background:#fff;min-width:0}
-.sub button{padding:11px 18px}
-.legal{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-
-/* reveal */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
-.hero .rv{animation:up .8s both}
-@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero .rv{animation:up .9s both}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
-@media (max-width:980px){
-  .nav-links,.nav-cta .login{display:none}
-  .burger{display:block}
-  .hero .wrap,.ind-wrap,.faq-wrap,.cta{grid-template-columns:1fr}
-  .hero-card{margin:30px 20px 20px}
-  .stats{grid-template-columns:1fr 1fr}
-  .stat:nth-child(2){border-right:0}
-  .stat{border-bottom:1px solid rgba(255,255,255,.1)}
-  .journey,.tool-grid{grid-template-columns:1fr 1fr}
-  .journey::before{display:none}
-  .story-grid,.learn-grid{grid-template-columns:1fr}
-  .cert-band{grid-template-columns:1fr 1fr}
-  .foot{grid-template-columns:1fr 1fr}
-  .cta{padding:40px 28px}
+@media (max-width:1020px){
+  .links,.nav-r .login{display:none}.burger{display:block}
+  .hero .wrap,.orbit-wrap,.get-grid{grid-template-columns:1fr}
+  .fit-grid{grid-template-columns:1fr}
+  .core{grid-auto-flow:column;justify-content:center;align-items:center}
+  .beam{display:none}
+  .tool-grid{grid-template-columns:1fr 1fr}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .panel{position:static}
+  .path{grid-template-columns:1fr;gap:18px}
+  .path::before{left:41px;right:auto;top:20px;bottom:20px;width:4px;height:auto}
+  .pn{display:grid;grid-template-columns:84px 1fr;gap:18px;text-align:left;align-items:center}
+  .pn .b{margin:0}
+  .pn b{min-height:0}
+  .row{grid-template-columns:1fr}.ct .flow{grid-template-columns:1fr 1fr}.ct .node::after{display:none}.tools .tool[style]{grid-template-columns:1fr!important}
 }
-@media (max-width:600px){
+@media (max-width:640px){
   .wrap{padding:0 16px}
-  section{padding:68px 0}
-  .journey,.tool-grid,.cert-band,.foot{grid-template-columns:1fr}
-  .cert-band>div{border-right:0;border-bottom:1px solid var(--line)}
-  .f1{left:-10px}.f2{right:-10px;top:-58px}.hero-card{margin-top:60px}.checks{grid-template-columns:1fr}
-  .tool-tabs{width:100%;overflow-x:auto}
-  .nav-cta .btn{display:none}
+  section{padding:76px 0}
+  .hero{padding:118px 0 70px}
+  .nav-r .btn{display:none}
+  .c1{left:-6px;top:6%}.c2{right:-6px}.c3{display:none}
+  .tool-grid,.how-grid,.proof-grid,.stories{grid-template-columns:1fr}
+  .tool.wide{grid-column:auto;grid-template-columns:1fr}
+  .tool.wide .ph{min-height:200px}
+  .gauge{flex-direction:column}
+  .sk div{grid-template-columns:100px 1fr 40px}
+  .sat{font-size:.74rem;padding:7px 9px}
+  .sat em{display:none}.orbit{width:72%}.hero h1 .l1 u{white-space:normal}
+  .btn{width:100%;justify-content:center}
+  .arrow{display:none}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.bar i{width:82%}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.ct .node{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<div class="topbar">Placement season is coming — get job-ready now.<a href="#contact">Talk to an advisor →</a></div>
-
-<nav>
+<nav id="nav">
   <div class="wrap">
-    <a href="#" class="logo"><img src="https://careertigers.com/build/assets/1000172865-removebg-preview-D-f3q5Sw.png" alt="CareerTigers logo"></a>
-    <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#tools">Career Tools</a>
-      <a href="#stories">Success Stories</a>
-      <a href="#industries">Industries</a>
-      <a href="#learn">Masterclasses</a>
-      <a href="#faq">FAQ</a>
+    <a href="#" class="logo"><img src="https://careertigers.com/build/assets/1000172865-removebg-preview-D-f3q5Sw.png" alt="Career Tiger"></a>
+    <div class="links">
+      <a href="#fit">Jobs</a><a href="#tools">Career Tools</a><a href="#persona">Assessments</a><a href="#tools">Counselling</a><a href="#how">Resources</a>
     </div>
-    <div class="nav-cta">
-      <a href="#" class="login">Log in</a>
-      <a href="#contact" class="btn btn-primary">Get Started</a>
+    <div class="nav-r">
+      <a href="#" class="login">Login</a>
+      <a href="#final" class="btn btn-fit">Get Started</a>
       <button class="burger" aria-label="Menu">☰</button>
     </div>
   </div>
 </nav>
 
+<!-- 1 · HERO -->
 <header class="hero">
-  <div class="stripes"></div>
   <div class="wrap">
     <div>
-      <span class="eyebrow rv">Career services for campus learners</span>
-      <h1 class="rv" style="animation-delay:.1s">From campus to your
-        <em>dream job.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 10 C 80 2, 200 2, 298 8" stroke="#F26B1D" stroke-width="4" fill="none" stroke-linecap="round"/></svg></em>
+      <h1>
+        <span class="l1 rv">Find the job that’s <u>right for you.</u></span>
+        <span class="l2 rv" style="animation-delay:.15s">Or get fit for the job you want.</span>
       </h1>
-      <p class="lead rv" style="animation-delay:.2s">AI career tools, 1-on-1 expert coaching and dedicated placement support — everything you need to get hired, in one place.</p>
-      <div class="ctas rv" style="animation-delay:.3s">
-        <a href="#contact" class="btn btn-primary">Start your journey →</a>
-        <a href="#how" class="btn btn-ghost">See how it works</a>
+      <p class="rv" style="animation-delay:.3s">From career discovery to job readiness — become the candidate companies are looking for.</p>
+      <div class="ctas rv" style="animation-delay:.45s">
+        <a href="#fit" class="btn btn-fit"><span class="i">🧭</span>Find My Right-Fit Job</a>
+        <a href="#getfit" class="btn btn-get"><span class="i">🎯</span>Get Job-Ready</a>
       </div>
-      <div class="proof rv" style="animation-delay:.4s">
-        <div class="avatars">
-          <span style="background:#F26B1D">PS</span><span style="background:#13203B">RV</span><span style="background:#1C8C5E">AP</span><span style="background:#8B5CF6">+</span>
-        </div>
-        <div>Trusted by <strong>20+ hiring partners</strong><br>across <strong>12 industries</strong></div>
-      </div>
+      <div class="cta-note rv" style="animation-delay:.55s"><span>Match on who you are</span><span>Close the gap to where you want to be</span></div>
     </div>
-
-    <div class="hero-card rv" style="animation-delay:.35s" aria-label="Sample learner dashboard">
-      <div class="hc-top">
-        <div class="hc-user"><div class="pic">RV</div><div><b>Your Career Dashboard</b><small>Target role · Software Developer</small></div></div>
-        <span class="pill">On track</span>
-      </div>
-      <div class="meter">
-        <div class="meter-row"><span>Job-readiness score</span><span style="color:var(--tiger-dk)">82%</span></div>
-        <div class="bar"><i></i></div>
-      </div>
-      <div class="checks">
-        <div class="check"><span class="tick">✓</span>ATS resume ready</div>
-        <div class="check"><span class="tick">✓</span>Aptitude test done</div>
-        <div class="check"><span class="tick">✓</span>2 mock interviews</div>
-        <div class="check pending"><span class="tick">•</span>Skill-gap: SQL</div>
-      </div>
-      <div class="float f1"><div class="ic" style="background:var(--green-soft)">📅</div><div><b>3 interviews</b>scheduled this week</div></div>
-      <div class="float f2"><div class="ic" style="background:var(--tiger-soft)">🎯</div><div><b>2,310+</b>new job matches</div></div>
+    <div class="stage rv" style="animation-delay:.3s">
+      <div class="frame"><img src="images/hero.jpg" alt="A candidate at the centre of her career journey: discover, assess, improve, prepare, get hired"></div>
+      <div class="chip c1"><div class="ring"><span>92%</span></div><div><small>Right-fit match</small><b>Product Analyst</b></div></div>
+      <div class="chip c2"><div><small>Job-ready progress</small><b>3 steps to go</b><div class="dots" style="margin-top:6px"><i></i><i></i><i></i><i class="o"></i><i class="o"></i></div></div></div>
+      <div class="chip c3"><span class="ai-tag" style="background:rgba(124,140,255,.2);color:#C7CEFF">AI</span><div><small>Skill gap found</small><b>SQL · Storytelling</b></div></div>
     </div>
   </div>
 </header>
 
-<div class="trust">
-  <p>Our learners are trusted by hiring partners across industries</p>
-  <div class="marquee"><div class="track" id="track"></div></div>
-</div>
-
-<div class="wrap">
-  <div class="stats rv">
-    <div class="stat"><b>20+</b><span>Hiring partners</span></div>
-    <div class="stat"><b>12</b><span>Industries covered</span></div>
-    <div class="stat"><b>8</b><span>AI-powered career tools</span></div>
-    <div class="stat"><b>11+</b><span>Certification courses</span></div>
-  </div>
-</div>
-
-<section id="how">
+<!-- 2 · DIFFERENTIATOR -->
+<section id="diff">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div><span class="eyebrow">How it works</span><h2 style="margin-top:12px">Four steps to <em style="color:var(--tiger);font-style:italic">hired.</em></h2></div>
-      <p class="lead">A clear, guided path — from understanding where you stand to walking into your first interview with confidence.</p>
+    <div class="center rv">
+      <span class="kicker">Why Career Tiger</span>
+      <h2 style="margin-top:14px">More than a job platform.<br><span style="color:var(--fit)">Your career readiness partner.</span></h2>
     </div>
-    <div class="journey">
-      <div class="step rv"><div class="num"></div><h3>Assess</h3><p>Profile analysis, aptitude &amp; personality tests, and career goal setting.</p><small>Know where you stand</small></div>
-      <div class="step rv"><div class="num"></div><h3>Build</h3><p>AI resume, LinkedIn makeover and skill-gap learning plan.</p><small>Look the part</small></div>
-      <div class="step rv"><div class="num"></div><h3>Practice</h3><p>Mock video interviews and timed assessments with AI + expert feedback.</p><small>Build confidence</small></div>
-      <div class="step rv"><div class="num"></div><h3>Get hired</h3><p>Role matching, applications, interview coordination and placement support.</p><small>Land the offer</small></div>
-    </div>
-  </div>
-</section>
-
-<section class="tools" id="tools">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div><span class="eyebrow">Career tools</span><h2 style="margin-top:12px">Your AI-powered toolkit</h2><p class="lead">Eight tools that work together — available through your CareerTigers portal.</p></div>
-      <div class="tool-tabs" role="tablist">
-        <button class="on" data-f="all">All tools</button>
-        <button data-f="prep">Prepare</button>
-        <button data-f="apply">Apply</button>
+    <div class="compare">
+      <div class="row old rv">
+        <div class="lbl"><b>Job portals</b><small>Keyword search</small></div>
+        <div class="flow"><div class="node"><span class="ic">🔍</span>Find a job</div><span class="arrow">→</span><div class="node"><span class="ic">📨</span>Apply</div><span class="arrow">→</span><div class="node"><span class="ic">🤞</span>Hope</div></div>
       </div>
-    </div>
-    <div class="tool-grid">
-      <div class="tool rv" data-c="apply"><span class="tag">Most used</span><div class="ico">📄</div><h3>AI Resume Builder</h3><p>Create ATS-friendly resumes tailored to your target roles.</p><a href="#">Try it →</a></div>
-      <div class="tool rv" data-c="apply"><div class="ico">🎯</div><h3>AI Job Matching</h3><p>Find the best-fit roles based on your skills and preferences.</p><a href="#">Try it →</a></div>
-      <div class="tool rv" data-c="prep"><div class="ico">🎥</div><h3>Mock Video Interviews</h3><p>Practise real interview scenarios and get AI-powered feedback.</p><a href="#">Try it →</a></div>
-      <div class="tool rv" data-c="apply"><div class="ico">📋</div><h3>Application Tracker</h3><p>Track applications, follow-ups and outcomes in one place.</p><a href="#">Try it →</a></div>
-      <div class="tool rv" data-c="prep"><div class="ico">⏱️</div><h3>Technical Assessments</h3><p>Practise technical assessments with timed challenges.</p><a href="#">Try it →</a></div>
-      <div class="tool rv" data-c="prep"><div class="ico">🧭</div><h3>Personality &amp; Workstyle</h3><p>Understand your strengths and find career paths that fit you.</p><a href="#">Try it →</a></div>
-      <div class="tool rv" data-c="prep"><div class="ico">📊</div><h3>Skill Gap Analysis</h3><p>See exactly what to learn next, with personalised recommendations.</p><a href="#">Try it →</a></div>
-      <div class="tool rv" data-c="prep"><div class="ico">🧠</div><h3>Aptitude &amp; Employability</h3><p>Assess your aptitude and benchmark your employability.</p><a href="#">Try it →</a></div>
-    </div>
-  </div>
-</section>
-
-<section id="stories">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div><span class="eyebrow">Success stories</span><h2 style="margin-top:12px">Real learners. Real offers.</h2></div>
-      <a href="#" class="btn btn-ghost">Read all stories →</a>
-    </div>
-    <div class="story-grid">
-      <div class="story big rv">
-        <span class="verified">● Career move</span>
-        <q>CareerTigers’ AI tools helped me craft the perfect resume and ace my interviews. Within 3 months, I landed my dream role!</q>
-        <div class="move">Marketing Executive <span class="arrow">→</span> Digital Marketing Manager</div>
-        <div class="who"><div class="pic">PS</div><div><b>Priya Sharma</b><small>MBA in Marketing</small></div></div>
-      </div>
-      <div class="story rv">
-        <span class="verified">● Career move</span>
-        <q>The mock interviews and coding challenges prepared me for real technical rounds. I felt confident walking into every interview.</q>
-        <div class="move">Fresh Graduate <span class="arrow">→</span> Junior Software Developer</div>
-        <div class="who"><div class="pic" style="background:var(--ink)">RV</div><div><b>Rahul Verma</b><small>BCA</small></div></div>
-      </div>
-      <div class="story rv">
-        <span class="verified">● Career move</span>
-        <q>The skill-gap analysis showed me exactly what to learn. The guidance was invaluable in my career transition.</q>
-        <div class="move">Accounts Assistant <span class="arrow">→</span> Financial Analyst</div>
-        <div class="who"><div class="pic" style="background:var(--green)">AP</div><div><b>Ananya Patel</b><small>M.Com</small></div></div>
-      </div>
-    </div>
-    <p class="note">Design note: stories are carried over from the current site. Before launch, use only real, verified learners — add real photo, employer logo and LinkedIn link to each card.</p>
-  </div>
-</section>
-
-<section class="industries" id="industries">
-  <div class="wrap ind-wrap">
-    <div class="rv">
-      <span class="eyebrow">Industries</span>
-      <h2 style="margin-top:12px">Wherever your ambition points.</h2>
-      <p class="lead" style="margin-top:14px">We prepare learners for leading roles across 12 industries. Pick one to see the roles we train for.</p>
-    </div>
-    <div class="rv">
-      <div class="ind-list" id="indList"></div>
-      <div class="roles"><small id="indName">IT &amp; Technology · roles</small><div id="roles"></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="learn">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div><span class="eyebrow">Learn from experts</span><h2 style="margin-top:12px">Masterclasses &amp; certifications</h2></div>
-      <a href="#" class="btn btn-ghost">Browse all courses →</a>
-    </div>
-    <div class="learn-grid">
-      <div class="mc rv"><div class="thumb"><div class="play">▶</div><span>Resume · 45 min</span></div><div class="body"><h3>Resume Building that Gets Interviews</h3><p>Craft ATS-friendly resumes that stand out to recruiters and hiring managers.</p><div class="by"><b>Sarah Johnson</b>Senior HR Director</div></div></div>
-      <div class="mc rv"><div class="thumb"><div class="play">▶</div><span>Interview · 60 min</span></div><div class="body"><h3>How to Crack Behavioral Interviews</h3><p>Master the STAR method and answer the toughest questions with confidence.</p><div class="by"><b>Michael Chen</b>Career Coach</div></div></div>
-      <div class="mc rv"><div class="thumb"><div class="play">▶</div><span>Career Planning · 50 min</span></div><div class="body"><h3>Your 30-60-90 Day Plan</h3><p>Build a strategic roadmap for your first 90 days in a new role.</p><div class="by"><b>Dr. Kavita Menon</b>Executive Coach</div></div></div>
-    </div>
-    <div class="cert-band rv">
-      <div><h3>Get certified.</h3><p>11+ industry-recognised courses with a certificate on completion.</p></div>
-      <div><b>Self-paced</b><p>Lifetime access to all course material.</p></div>
-      <div><b>Industry certificates</b><p>Recognised by hiring managers.</p></div>
-      <div><b>3-year mentorship</b><p>Guidance long after your course ends.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="faq" style="background:var(--white)">
-  <div class="wrap faq-wrap">
-    <div class="rv">
-      <span class="eyebrow">FAQ</span>
-      <h2 style="margin-top:12px">Questions, answered.</h2>
-      <p class="lead" style="margin-top:14px">Can’t find what you need? Email <a href="mailto:support@careertigers.com" style="color:var(--tiger-dk);font-weight:600">support@careertigers.com</a></p>
-    </div>
-    <div class="rv">
-      <details open><summary>What is CareerTigers?</summary><p>A career-services platform that combines AI career tools, expert coaching and job-readiness programs to help campus learners move from learning to earning.</p></details>
-      <details><summary>Who is CareerTigers for?</summary><p>Active learners and alumni. Placement support may require final-term eligibility and academic standing.</p></details>
-      <details><summary>How do I register?</summary><p>Click “Get Started”, fill in your details and you’ll get access to the CareerTigers portal where all tools live.</p></details>
-      <details><summary>What should I fill in my profile?</summary><p>Your education, skills, target roles, preferred locations and your latest resume — the more complete it is, the better your job matches.</p></details>
-      <details><summary>Is my data safe?</summary><p>[Add the answer from the current site, and link the Privacy Policy here.]</p></details>
-    </div>
-  </div>
-</section>
-
-<section id="contact" style="padding-bottom:40px">
-  <div class="wrap">
-    <div class="cta rv">
-      <div>
-        <h2>Your dream job is closer <em>than you think.</em></h2>
-        <p>Talk to a career advisor — we’ll help you map your next steps.</p>
-        <div class="contact-row">
-          <div><b>Email</b>support@careertigers.com</div>
-          <div><b>Call</b>+91 78384 44401</div>
-          <div><b>Location</b>Solan, Himachal Pradesh</div>
+      <div class="row ct" id="ctRow">
+        <div class="lbl"><b style="color:var(--fit)">Career Tiger</b><small>Built around you</small></div>
+        <div class="flow">
+          <div class="node"><span class="ic">🧭</span><div>Discover<small>Who you are</small></div></div><span class="arrow">→</span>
+          <div class="node"><span class="ic">📋</span><div>Assess<small>Where you stand</small></div></div><span class="arrow">→</span>
+          <div class="node"><span class="ic">💪</span><div>Prepare<small>Close the gaps</small></div></div><span class="arrow">→</span>
+          <div class="node"><span class="ic">🚀</span><div>Apply<small>To right-fit roles</small></div></div><span class="arrow">→</span>
+          <div class="node"><span class="ic">📈</span><div>Grow<small>Keep moving up</small></div></div>
         </div>
       </div>
-      <form onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ We’ll call you soon';">
-        <input placeholder="Full name" required aria-label="Full name">
-        <input placeholder="Phone number" type="tel" required aria-label="Phone number">
-        <select aria-label="I am a"><option>I’m a current learner</option><option>I’m an alumnus</option><option>I’m a recruiter</option></select>
-        <button class="btn btn-primary" style="justify-content:center">Request a callback</button>
-        <small>🔒 We never share your details. No spam.</small>
-      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · PERSONALIZATION -->
+<section class="persona" id="persona">
+  <div class="wrap orbit-wrap">
+    <div class="rv">
+      <span class="kicker">Personalised</span>
+      <h2 style="margin-top:14px">Your career path shouldn’t be one-size-fits-all.</h2>
+      <p class="sub">Career Tiger builds a picture of the whole you — not just keywords on a resume.</p>
+    </div>
+    <div class="orbit rv" id="orbit">
+      <div class="ringline"></div><div class="ringline i2"></div>
+      <div class="me"><div><b>You</b><small>one profile,<br>every angle</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · FIND YOUR FIT -->
+<section class="fit" id="fit">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="kicker">Find your fit</span>
+      <h2 style="margin-top:14px">Matched on more than keywords.</h2>
+      <div class="toggle" role="tablist">
+        <button class="on" data-m="ct">Career Tiger match</button>
+        <button data-m="kw">Keyword match</button>
+      </div>
+    </div>
+    <div class="fit-grid">
+      <div class="card-d rv">
+        <div class="prof-h"><div class="av">AK</div><div><b>Your Profile</b><small>Final-year BBA · Pune</small></div></div>
+        <div class="attr"><span>Skills</span><div class="tags"><i>Excel</i><i>Research</i><i>Canva</i></div></div>
+        <div class="attr"><span>Experience</span><div class="tags"><i>2 internships</i></div></div>
+        <div class="attr"><span>Personality</span><div class="tags"><i>Analytical</i><i>Curious</i></div></div>
+        <div class="attr"><span>Work style</span><div class="tags"><i>Structured</i><i>Team player</i></div></div>
+        <div class="attr"><span>Goals</span><div class="tags"><i>Product roles</i></div></div>
+        <div class="attr"><span>Preferences</span><div class="tags"><i>Hybrid</i><i>Bengaluru</i></div></div>
+      </div>
+      <div class="core rv">
+        <div class="beam"></div>
+        <div class="orb">Career<br>Tiger AI</div>
+        <small>reads the whole profile</small>
+        <div class="beam"></div>
+      </div>
+      <div class="rv">
+        <div class="jobs" id="jobs">
+          <div class="job"><div class="lg">📊</div><div><b>Product Analyst</b><div class="why"><i>Analytical</i><i>Research</i><i>Goal match</i></div></div><div class="ring" style="--p:92"><span>92%</span></div></div>
+          <div class="job"><div class="lg">🧪</div><div><b>Business Analyst</b><div class="why"><i>Structured</i><i>Excel</i></div></div><div class="ring" style="--p:86"><span>86%</span></div></div>
+          <div class="job"><div class="lg">🛒</div><div><b>Category Associate</b><div class="why"><i>Curious</i><i>Hybrid</i></div></div><div class="ring" style="--p:78"><span>78%</span></div></div>
+        </div>
+        <div class="kwnote" id="kwnote">Right-fit roles, with the reasons you fit.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · GET FIT -->
+<section id="getfit">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="kicker" style="color:var(--get)">Get fit</span>
+      <h2 style="margin-top:14px">Get fit for the job you want.</h2>
+      <p class="sub">Pick a target role. We’ll show the gap — and close it with you.</p>
+    </div>
+    <div class="get-grid">
+      <div class="steps rv" id="steps"><div class="bar" id="bar"></div></div>
+      <div class="panel rv" id="panel">
+        <div class="pane"><span class="ai-tag">AI-powered</span><h3>Choose your target job</h3>
+          <div class="target"><span>Data Analyst</span><span class="sel">Product Analyst</span><span>UX Designer</span><span>Sales Lead</span><span>+ Paste a job description</span></div>
+          <div class="jd"><b>Product Analyst · Fintech</b><br>SQL · Dashboards · A/B testing · Stakeholder storytelling · 0–2 yrs</div></div>
+        <div class="pane"><span class="ai-tag">AI-powered</span><h3>Resume analysis</h3>
+          <div class="checklist"><div><span class="ok">✓</span>Clear education &amp; internships</div><div><span class="ok">✓</span>Quantified achievements</div><div><span class="x">✕</span>Missing keywords: SQL, A/B testing</div><div><span class="x">✕</span>Summary not tailored to role</div></div></div>
+        <div class="pane"><span class="ai-tag">ATS Scanner</span><h3>Your ATS score</h3>
+          <div class="gauge"><div class="big-ring" id="ats"><span><div><span id="atsN">0</span><small>/ 100 ATS</small></div></span></div>
+          <div class="checklist"><div><span class="ok">↑</span>+14 after adding role keywords</div><div><span class="ok">↑</span>+8 after tailoring summary</div><div><span class="ok">↑</span>+6 after fixing format</div></div></div></div>
+        <div class="pane"><span class="ai-tag">AI-powered</span><h3>Skill gap analysis</h3>
+          <div class="sk">
+            <div>Excel<span class="tr"><i style="width:85%"></i><u style="left:70%"></u></span>✓</div>
+            <div>Research<span class="tr"><i style="width:78%"></i><u style="left:65%"></u></span>✓</div>
+            <div>SQL<span class="tr gapc"><i style="width:30%"></i><u style="left:70%"></u></span>Gap</div>
+            <div>A/B testing<span class="tr gapc"><i style="width:22%"></i><u style="left:60%"></u></span>Gap</div>
+            <div>Storytelling<span class="tr gapc"><i style="width:50%"></i><u style="left:75%"></u></span>Gap</div>
+          </div>
+          <div class="legend"><span>▮ You today</span><span>| Role requirement</span></div></div>
+        <div class="pane"><span class="ai-tag">AI feedback</span><h3>Interview preparation</h3>
+          <div class="img"><img src="images/interview.jpg" alt="Candidate practising a mock video interview with AI feedback"></div>
+          <div class="checklist"><div><span class="ok">✓</span>Confident pace &amp; eye contact</div><div><span class="x">!</span>Use the STAR method in answer 3</div></div></div>
+        <div class="pane"><span class="human">Human expert</span><h3>Expert guidance</h3>
+          <div class="img"><img src="images/counselling.jpg" alt="One-on-one career counselling session with an expert"></div>
+          <div class="checklist"><div><span class="ok">✓</span>1-on-1 counselling to plan your next 90 days</div></div></div>
+        <div class="pane"><div class="ready"><div class="medal">🏆</div><h3>Job-ready</h3><p class="sub" style="margin-top:0">Now apply with confidence to right-fit roles.</p><a href="#fit" class="btn btn-fit" style="margin-top:20px">See my matches →</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · TOOLS -->
+<section class="tools" id="tools">
+  <div class="wrap">
+    <div class="rv">
+      <span class="kicker" style="color:var(--get)">Career readiness tools</span>
+      <h2 style="margin-top:14px">Get ready for the job you want.</h2>
+    </div>
+    <div class="tool-grid">
+      <div class="tool rv"><div class="top"><div class="ico">📄</div><span class="ai-tag">AI</span></div><h3>AI Resume Builder</h3><p>An ATS-friendly resume, tailored to your target role.</p></div>
+      <div class="tool dark rv"><div class="top"><div class="ico">🎯</div><span class="ai-tag" style="color:#C7CEFF">AI</span></div><h3>ATS Resume Scanner</h3><p>Check your resume against any job description.</p><div class="mini-score"><span>ATS</span><span class="tr"><i></i></span><span>86</span></div></div>
+      <div class="tool wide rv"><div class="txt"><div class="top"><div class="ico">🎥</div><span class="ai-tag">AI feedback</span></div><h3>Mock Video Interviews</h3><p>Practise realistic interviews. Get instant feedback.</p></div><div class="ph"><img src="images/interview.jpg" alt="Mock video interview practice"></div></div>
+      <div class="tool wide rv"><div class="ph"><img src="images/counselling.jpg" alt="Career counselling session"></div><div class="txt"><div class="top"><div class="ico">🤝</div><span class="human">Human expert</span></div><h3>1-on-1 Career Counselling</h3><p>Personal guidance from career experts.</p></div></div>
+      <div class="tool rv"><div class="top"><div class="ico">🎙️</div><span class="human">Live</span></div><h3>Expert Webinars</h3><p>Learn from industry practitioners.</p></div>
+      <div class="tool rv"><div class="top"><div class="ico">🧩</div><span class="ai-tag">AI</span></div><h3>Work Style &amp; Personality</h3><p>Know your strengths and where you’ll thrive.</p></div>
+      <div class="tool rv" style="grid-column:1/-1;display:grid;grid-template-columns:auto 1fr 1.2fr;gap:24px;align-items:center"><div class="ico">📊</div><div><span class="ai-tag">AI</span><h3 style="margin-top:8px">Skill Gap Analysis</h3><p>See exactly what’s missing for your target role — and how to close it.</p></div>
+        <div class="sk" style="margin-top:6px"><div>SQL<span class="tr gapc"><i style="width:30%"></i><u style="left:70%"></u></span>Gap</div><div>Excel<span class="tr"><i style="width:85%"></i><u style="left:70%"></u></span>✓</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · CAREER MOVES -->
+<section id="moves">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="kicker">For every stage</span>
+      <h2 style="margin-top:14px">Your next career move starts here.</h2>
+    </div>
+    <div class="moves-tabs rv" id="mtabs"></div>
+    <div class="path rv" id="path"></div>
+  </div>
+</section>
+
+<!-- 8 · HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="center rv"><span class="kicker">How it works</span><h2 style="margin-top:14px">Five steps. One clear path.</h2></div>
+    <div class="how-grid">
+      <div class="hw rv"><div class="ico">📋</div><h3>Assess</h3><p>Aptitude, personality &amp; work style.</p><div class="pg"><i></i></div></div>
+      <div class="hw rv"><div class="ico">🧭</div><h3>Discover</h3><p>Roles and industries that fit you.</p><div class="pg"><i></i></div></div>
+      <div class="hw rv"><div class="ico">💪</div><h3>Improve</h3><p>Close skill gaps. Sharpen your resume.</p><div class="pg"><i></i></div></div>
+      <div class="hw rv"><div class="ico">🚀</div><h3>Apply</h3><p>Interview-ready, to right-fit roles.</p><div class="pg"><i></i></div></div>
+      <div class="hw rv"><div class="ico">📈</div><h3>Grow</h3><p>Switch, advance, get promoted.</p><div class="pg"><i></i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · PROOF -->
+<section id="proof">
+  <div class="wrap">
+    <div class="center rv"><span class="kicker">Trusted</span><h2 style="margin-top:14px">Trusted by hiring partners across industries.</h2></div>
+    <div class="proof-grid">
+      <div class="stat rv"><b>20+</b><span>Hiring partners</span></div>
+      <div class="stat rv"><b>12</b><span>Industries covered</span></div>
+      <div class="stat rv"><b>11+</b><span>Certification courses</span></div>
+    </div>
+    <div class="marquee"><div class="track" id="track"></div></div>
+    <div class="stories">
+      <div class="story rv"><div class="mv"><span>Marketing Executive</span>→<span class="to">Digital Marketing Manager</span></div><q>The AI tools helped me craft the perfect resume and ace my interviews.</q><div class="who"><i>PS</i><div><b>Priya Sharma</b><br>MBA, Marketing</div></div></div>
+      <div class="story rv"><div class="mv"><span>Fresh Graduate</span>→<span class="to">Junior Software Developer</span></div><q>Mock interviews prepared me for real technical rounds.</q><div class="who"><i style="background:var(--ink)">RV</i><div><b>Rahul Verma</b><br>BCA</div></div></div>
+      <div class="story rv"><div class="mv"><span>Accounts Assistant</span>→<span class="to">Financial Analyst</span></div><q>Skill gap analysis showed me exactly what to learn.</q><div class="who"><i style="background:var(--get)">AP</i><div><b>Ananya Patel</b><br>M.Com</div></div></div>
+    </div>
+    <p class="note">Design note: figures and stories are carried over from the current site. Verify them and add photos and LinkedIn links before launch.</p>
+  </div>
+</section>
+
+<!-- 10 · FINAL CTA -->
+<section class="final" id="final">
+  <div class="wrap">
+    <div class="box rv">
+      <h2>Your next career move<br>starts here.</h2>
+      <p>Find where you fit — or get fit for where you’re going.</p>
+      <div class="ctas">
+        <a href="#fit" class="btn btn-fit"><span class="i">🧭</span>Find My Fit</a>
+        <a href="#getfit" class="btn btn-get"><span class="i">🎯</span>Get Job-Ready</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="foot">
-      <div><img src="https://careertigers.com/build/assets/1000172865-removebg-preview-D-f3q5Sw.png" alt="CareerTigers" style="height:46px;margin-bottom:14px"><p>The next-gen career services platform for campus learners. From learning to earning — faster.</p></div>
-      <div><h4>Explore</h4><ul><li><a href="#tools">Career Tools</a></li><li><a href="#learn">Masterclasses</a></li><li><a href="#stories">Success Stories</a></li><li><a href="#">Blog</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="#contact">Contact</a></li><li><a href="#">For Recruiters</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
-      <div><h4>Career tips, weekly</h4><p>Resume tips, job alerts and interview prep in your inbox.</p><form class="sub" onsubmit="event.preventDefault()"><input type="email" placeholder="you@email.com" aria-label="Email"><button class="btn btn-primary">Subscribe</button></form></div>
-    </div>
-    <div class="legal"><span>© 2026 CareerTigers. All rights reserved.</span><span>Made for learners who dream big 🐯</span></div>
+    <span>© 2026 Career Tiger · Solan, Himachal Pradesh · support@careertigers.com</span>
+    <nav><a href="#">Privacy</a><a href="#">Terms</a><a href="#final">Contact</a></nav>
   </div>
 </footer>
 
 <script>
-// partners (deduplicated)
-const partners=["eClerx","Extramarks","Alpha Innovation","LawSikho","RupeeQ","Zsapiens","Internzvalley","Learning Routes","Star Health Insurance","CollegeDunia","PlanetSpark","InternSpot Innovation","Teleperformance","SKY Radiant","upGrad","Careers360","Hike Education","AAJ Supply Chain"];
-document.getElementById('track').innerHTML=[...partners,...partners].map(p=>`<span>${p}</span>`).join('');
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+// nav
+addEventListener('scroll',()=>$('#nav').classList.toggle('solid',scrollY>30));
 
-// industries
-const ind={"IT & Technology":["Software Developer","DevOps Engineer","QA Analyst"],"Finance & Banking":["Risk Analyst","Financial Analyst","Credit Analyst"],"Consulting":["Business Analyst","Strategy Analyst","Management Consultant"],"EdTech":["Product Manager","Program Manager","Learning Designer"],"Management":["Ops Manager","Growth Associate","Project Manager"],"Healthcare":["Healthcare Ops","Hospital Admin","Health Data Analyst"],"Manufacturing":["Supply Chain Analyst","Quality Engineer","Production Manager"],"Retail & E-commerce":["Category Analyst","Ops Lead","E-commerce Manager"],"Construction":["Project Coordinator","Safety Officer","Site Engineer"],"Energy & Renewables":["Sustainability Analyst","Renewables Project Associate","Energy Consultant"],"Pharmaceuticals":["Clinical Research Associate","Regulatory Associate","Medical Rep"],"Hospitality":["Front Office Supervisor","Guest Relations","Revenue Manager"]};
-const L=document.getElementById('indList');
-function pick(k){document.querySelectorAll('.ind').forEach(b=>b.classList.toggle('on',b.textContent===k));document.getElementById('indName').textContent=k+' · roles';document.getElementById('roles').innerHTML=ind[k].map(r=>`<span>${r}</span>`).join('');}
-Object.keys(ind).forEach(k=>{const b=document.createElement('button');b.className='ind';b.textContent=k;b.onclick=()=>pick(k);L.appendChild(b)});
-pick("IT & Technology");
+// orbit chips
+const sats=[["🛠️","Skills","Excel, SQL"],["💼","Experience","2 internships"],["🧠","Personality","Analytical"],["⚙️","Work style","Structured"],["🎯","Career goals","Product"],["🏁","Target role","Product Analyst"],["🏭","Industry","Fintech"],["📉","Skill gaps","SQL",1]];
+const R=44;sats.forEach((s,i)=>{const a=(i/sats.length)*2*Math.PI-Math.PI/2;const d=document.createElement('div');d.className='sat'+(s[3]?' gap':'');d.style.left=(50+R*Math.cos(a))+'%';d.style.top=(50+R*Math.sin(a))+'%';d.innerHTML=`<span>${s[0]}</span>${s[1]} <em>${s[2]}</em>`;$('#orbit').appendChild(d)});
 
-// tool filter
-document.querySelectorAll('.tool-tabs button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.tool-tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
-  document.querySelectorAll('.tool').forEach(t=>t.classList.toggle('hide',b.dataset.f!=='all'&&t.dataset.c!==b.dataset.f));
-});
+// fit toggle
+$$('.toggle button').forEach(b=>b.onclick=()=>{$$('.toggle button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const kw=b.dataset.m==='kw';$('#jobs').classList.toggle('kw',kw);
+  $('#kwnote').textContent=kw?'Keyword search: matches “Excel” — misses who you are.':'Right-fit roles, with the reasons you fit.';});
 
-// reveal on scroll
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>{if(!el.closest('.hero'))io.observe(el)});
+// get fit stepper
+const steps=[["🎯","Target Job","Pick the role you want"],["📄","Resume Analysis","What works, what doesn’t"],["📈","ATS Score","See how systems read you"],["🧩","Skill Gap Analysis","What’s missing"],["🎥","Interview Preparation","Practise with AI feedback"],["🤝","Expert Guidance","1-on-1 with a counsellor"],["🏆","Job Ready","Apply with confidence"]];
+const S=$('#steps');steps.forEach((s,i)=>{const b=document.createElement('button');b.className='st';b.innerHTML=`<span class="dot">${s[0]}</span><span>${s[1]}<small>${s[2]}</small></span>`;b.onclick=()=>{go(i);stop()};S.appendChild(b)});
+let cur=0,timer;
+function go(i){cur=i;$$('.st').forEach((b,j)=>{b.classList.toggle('on',j===i);b.classList.toggle('done',j<i)});
+  $$('.pane').forEach((p,j)=>p.classList.toggle('on',j===i));
+  const st=$$('.st');$('#bar').style.height=(st[i].offsetTop+24-24)+'px';
+  if(i===2){let n=0;const t=setInterval(()=>{n+=2;$('#atsN').textContent=n;$('#ats').style.setProperty('--p',n);if(n>=86)clearInterval(t)},18)}}
+function stop(){clearInterval(timer)}
+function play(){timer=setInterval(()=>go((cur+1)%steps.length),3200)}
+go(0);
+new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){stop();play()}else stop()})},{threshold:.35}).observe($('#panel'));
+
+// career moves
+const moves={
+ start:["🎓","Start your career",["Student","Aptitude & personality","Resume, SQL basics","Mock interviews","Job-ready graduate"]],
+ switch:["🔀","Switch careers",["Sales Executive · Retail","Transferable skills","Data & product basics","Portfolio + interviews","Product Analyst · Fintech"]],
+ role:["↗️","Move into a new role",["Content Writer","Work-style fit","UX research gaps","Case-study practice","UX Researcher"]],
+ promo:["🏅","Get promoted",["Team Member","Leadership assessment","People & strategy skills","Expert counselling","Team Lead"]]};
+const labels=["Current you","Career assessment","Skill gap","Preparation","Target role"],icons=["🙂","📋","🧩","💪","🏆"];
+Object.entries(moves).forEach(([k,v],i)=>{const b=document.createElement('button');b.innerHTML=`<span>${v[0]}</span>${v[1]}`;if(!i)b.className='on';b.onclick=()=>{$$('#mtabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');drawPath(k)};$('#mtabs').appendChild(b)});
+function drawPath(k){const p=$('#path');p.classList.remove('swap');void p.offsetWidth;p.classList.add('swap');p.innerHTML=moves[k][2].map((t,i)=>`<div class="pn"><div class="b">${icons[i]}</div><div><small>${labels[i]}</small><b>${t}</b></div></div>`).join('')}
+drawPath('start');
+
+// partners (from current site, deduplicated)
+const partners=["eClerx","Extramarks","Alpha Innovation","LawSikho","RupeeQ","Zsapiens","Internzvalley","Learning Routes","Star Health Insurance","CollegeDunia","PlanetSpark","InternSpot Innovation","Teleperformance","SKY Radiant","upGrad","Careers360","Hike Education"];
+$('#track').innerHTML=[...partners,...partners].map(p=>`<span>${p}</span>`).join('');
+
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+  if(e.target.id==='ctRow')$$('#ctRow .node').forEach((n,i)=>n.style.transitionDelay=(i*.15)+'s');
+  io.unobserve(e.target)}}),{threshold:.15});
+$$('.rv,#ctRow,.how').forEach(el=>{if(!el.closest('.hero'))io.observe(el)});
 </script>
 </body>
 </html>
